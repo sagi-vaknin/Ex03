@@ -57,6 +57,7 @@ jobs:
           cat log.txt
           echo "Container up and running" >> log.txt
           cat log.txt
+          ls
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
