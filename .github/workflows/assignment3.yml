@@ -10,6 +10,7 @@ jobs:
       - name: Build the image
         run: |
           docker build . --file Dockerfile --tag myapp:latest
+          docker save myapp:latest -o myapp.tar
       - name: updating the log file, if succesful image built
         if: success()
         run: |
@@ -29,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: myimage
-          path: ../../myapp:latest
+          path: myapp.tar
       - name: upload the log file into GitHub repo
         if: always()
         uses: actions/upload-artifact@v3
