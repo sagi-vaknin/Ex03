@@ -54,10 +54,15 @@ jobs:
         if: success()
         run: |
           ls
-          echo "Container up and running" >> logfile/log.txt
+          cd logfile
+          ls
+          echo "Container up and running" >> log.txt
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
+          ls
+          cd logfile
+          ls
           echo "Container failed to run" >> logfile/log.txt
       - name: Checkout
         uses: actions/checkout@v3
@@ -71,7 +76,6 @@ jobs:
       - name: run pytest tests
         run: |
           cd tests
-          ls
           pytest -v assn3_tests.py > test_results.txt
       - name: upload the test results
         if: always() 
