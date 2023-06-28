@@ -53,7 +53,12 @@ jobs:
       - name: update the log file if the container is running
         if: success()
         run: |
+          ls
+          cd logfile
+          ls
+          cat logfile/log.txt
           echo "Container up and running" >> logfile/log.txt
+          cat logfile/log.txt
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
@@ -82,7 +87,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with: 
-          name: logfile2
+          name: logfile
           path: log.txt
+          
       
     #query:
