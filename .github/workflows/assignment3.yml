@@ -50,8 +50,8 @@ jobs:
       - name: Download log file
         uses: actions/download-artifact@v3
         with:
-          name: log.txt
-          path: logfile
+          name: logfile
+          path: log.txt
       - name: Load docker image
         run: docker load --input myimage/myapp.tar
       - name: check myimage image is loaded
