@@ -53,10 +53,10 @@ jobs:
       - name: update the log file if the container is running
         if: success()
         run: |
-          echo "Container up and running" >> logfile
+          echo "Container up and running" >> logfile/log.txt
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
-          echo "Container failed to run" >> logfile
+          echo "Container failed to run" >> logfile/log.txt
       
     #query:
