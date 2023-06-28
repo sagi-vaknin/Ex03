@@ -24,6 +24,12 @@ jobs:
           echo " $current_time" > log.txt
           echo "Sagi Vaknin and Rani Bezalel" >> log.txt
           echo "image not able to be built" >> log.txt 
+      - name: upload the image
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: myimage
+          path: myapp:latest
       - name: upload the log file into GitHub repo
         if: always()
         uses: actions/upload-artifact@v3
