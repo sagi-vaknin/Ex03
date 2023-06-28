@@ -70,6 +70,7 @@ jobs:
       - name: run pytest tests
         run: |
           cd tests
+          ls
           pytest -v assn3_tests.py > test_results.txt
       - name: upload the test results
         if: always() 
