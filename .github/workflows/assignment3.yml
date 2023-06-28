@@ -55,6 +55,11 @@ jobs:
         run: |
           cd logfile
           echo "Container up and running" >> log.txt
+          ls
+          pwd 
+          cd ..
+          ls
+          pwd
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
