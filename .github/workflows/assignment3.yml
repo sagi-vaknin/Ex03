@@ -38,8 +38,25 @@ jobs:
           name: logfile
           path: log.txt
 
-        
-
-    #test:
-
+    test:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+      - name: Load docker image
+        run: docker load --input myimage/myapp.tar
+      - name: check myimage image is loaded
+        run: docker image ls
+      - name: run image in container
+        run: docker run -p 8000:8000 myapp:latest
+      - name: update the log file if the container is running
+        if: success()
+        run: |
+          echo "Container up and running" >> logfile
+      - name: update the log file if the container is not running properly
+        if: failure()
+        run: |
+          echo "Container failed to run" >> logfile
+      
     #query:
