@@ -29,7 +29,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: myimage
-          path: myapp:latest
+          path: ../../myapp:latest
       - name: upload the log file into GitHub repo
         if: always()
         uses: actions/upload-artifact@v3
