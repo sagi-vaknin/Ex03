@@ -30,12 +30,7 @@ def test_get_all_dishes():
 def test_create_invalid_dish():
     response = requests.post(f"{base_url}/dishes", json={"name": "blah"})
     assert response.status_code in [400, 404, 422]
-    
-    try:
-        response_data = response.json()
-        assert response_data["return_value"] == -3
-    except (ValueError, KeyError):
-        assert False
+    assert response.json() == -3
 
 def test_same_dish_name():
     dish_name = "orange"
