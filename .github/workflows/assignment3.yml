@@ -69,7 +69,9 @@ jobs:
           pip install requests
       - name: run pytest tests
         run: |
-          cd /tests
+          ls
+          pwd
+          cd ../tests
           pytest -v assn3_tests.py > test_results.txt
       - name: upload the test results
         if: always() 
