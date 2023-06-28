@@ -58,13 +58,6 @@ def test_create_meal():
 def test_get_meals():
     response = requests.get(f"{base_url}/meals")
     assert response.status_code == 200
-    assert len(response.json()) == 1
-    meal = response.json()[0]
-    assert 400 <= meal["calories"] <= 500
-
-def test_get_meals():
-    response = requests.get(f"{base_url}/meals")
-    assert response.status_code == 200
     meals = response.json()
     assert len(meals) == 1
 
