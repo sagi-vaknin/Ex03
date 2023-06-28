@@ -54,11 +54,7 @@ jobs:
         if: success()
         run: |
           ls
-          cd logfile
-          ls
-          cat logfile/log.txt
           echo "Container up and running" >> logfile/log.txt
-          cat logfile/log.txt
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
