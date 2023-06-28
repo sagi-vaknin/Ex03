@@ -69,6 +69,7 @@ jobs:
           pip install requests
       - name: run pytest tests
         run: |
+          cd ..
           cd tests
           pytest -v assn3_tests.py > test_results.txt
       - name: upload the test results
