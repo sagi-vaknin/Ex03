@@ -61,8 +61,10 @@ def test_get_meals():
     meals = response.json()
     assert len(meals) == 1
 
-    #meal = meals[0]
-    assert 400 <= meals[0]["calories"] <= 500
+    meal = meals[0]
+    calories = meal["cal"]
+
+    assert 400 <= calories <= 500
 
 def test_same_meal_name():
     appetizer_id = 1  # ID of the "orange" dish
