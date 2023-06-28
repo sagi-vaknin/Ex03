@@ -55,11 +55,6 @@ jobs:
         run: |
           cd logfile
           echo "Container up and running" >> log.txt
-          ls
-          pwd 
-          cd ..
-          ls
-          pwd
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
@@ -89,7 +84,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with: 
           name: logfile
-          path: logfile/log.txt
+          path: /home/runner/work/Ex03/Ex03/logfile/log.txt
           
       
     #query:
