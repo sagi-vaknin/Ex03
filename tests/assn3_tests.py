@@ -30,9 +30,12 @@ def test_get_all_dishes():
 def test_create_invalid_dish():
     response = requests.post(f"{base_url}/dishes", json={"name": "blah"})
     assert response.status_code in [400, 404, 422]
-    response_data = response.json()
-    #assert isinstance(response_data, dict)  # Verify the response data is a dictionary
-    assert response_data.get("return_value") == -3 
+    
+    try:
+        response_data = response.json()
+        assert response_data["return_value"] == -3
+    except (ValueError, KeyError):
+        assert False
 
 def test_same_dish_name():
     dish_name = "orange"
