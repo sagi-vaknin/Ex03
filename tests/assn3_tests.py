@@ -80,4 +80,4 @@ def test_same_meal_name():
         },
     )
     assert response.status_code in [400, 422]
-    assert response.json()["code"] == -2
+    assert response.json() == -2
