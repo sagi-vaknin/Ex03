@@ -1,0 +1,38 @@
+name: assignment3
+on: 
+  push:
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build the image
+        run: |
+          docker build . --file Dockerfile --tag myapp:latest
+      - name: updating the log file, if succesful image built
+        if: succeeded()
+        run: |
+          current_time=$(date -Iminutes)
+          echo " $current_time" > log.txt
+          echo "Sagi Vaknin and Rani Bezalel" >> log.txt
+          echo "image successfully built" >> log.txt 
+      - name: updating the log file, if failure in image build
+        if: failed()
+        run: |
+          current_time=$(date -Iminutes)
+          echo " $current_time" > log.txt
+          echo "Sagi Vaknin and Rani Bezalel" >> log.txt
+          echo "image not able to be built" >> log.txt 
+      - name: upload the log file into GitHub repo
+        if: always()
+        uses: actions/upload-artifact@v3
+        with: 
+          name: logfile
+          path: /.github/workflows/log.txt
+
+        
+
+    #test:
+
+    #query:
