@@ -9,7 +9,7 @@ def test_create_dishes():
     for dish in dishes:
         response = requests.post(f"{base_url}/dishes", json={"name": dish})
         assert response.status_code == 201
-        dish_id = response.json()["id"]
+        dish_id = response.json()
         assert dish_id not in ids
         ids.add(dish_id)
 
