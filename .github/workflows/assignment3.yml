@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with: 
           name: logfile
-          path: log.txt
+          path: logfile/log.txt
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Python
