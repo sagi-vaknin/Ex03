@@ -62,6 +62,15 @@ def test_get_meals():
     meal = response.json()[0]
     assert 400 <= meal["calories"] <= 500
 
+def test_get_meals():
+    response = requests.get(f"{base_url}/meals")
+    assert response.status_code == 200
+    meals = response.json()
+    assert len(meals) == 1
+
+    #meal = meals[0]
+    assert 400 <= meals[0]["calories"] <= 500
+
 def test_same_meal_name():
     appetizer_id = 1  # ID of the "orange" dish
     main_id = 2  # ID of the "spaghetti" dish
