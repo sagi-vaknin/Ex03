@@ -60,6 +60,11 @@ jobs:
         run: |
           cd logfile
           echo "Container failed to run" >> log.txt
+      - name: retrieveing data about the job
+        run: |
+          ls >> temp.txt
+          echo " === " >> temp.txt
+          pwd >> temp.txt
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Python
@@ -85,11 +90,6 @@ jobs:
         with: 
           name: logfile
           path: ${{ github.workspace }}/logfile/log.txt
-      - name: retrieveing data about the job
-        run: |
-          ls >> temp.txt
-          echo " === " >> temp.txt
-          pwd >> temp.txt
       - name: upload the data file
         if: always()
         uses: actions/upload-artifact@v3
