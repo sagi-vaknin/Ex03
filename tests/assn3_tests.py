@@ -36,7 +36,7 @@ def test_same_dish_name():
     dish_name = "orange"
     response = requests.post(f"{base_url}/dishes", json={"name": dish_name})
     assert response.status_code in [400, 404, 422]
-    assert response.json()["value"] == -2
+    assert response.json() == -2
 
 def test_create_meal():
     appetizer_id = 1  # ID of the "orange" dish
@@ -52,7 +52,8 @@ def test_create_meal():
         },
     )
     assert response.status_code == 201
-    assert response.json()["id"] > 0
+    dish_id = response.json()
+    assert dish_id > 0
 
 def test_get_meals():
     response = requests.get(f"{base_url}/meals")
