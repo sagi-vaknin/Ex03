@@ -42,6 +42,10 @@ jobs:
       needs: build
       runs-on: ubuntu-latest
       steps:
+      - name: Download logfile artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: logfile
       - name: Download artifact
         uses: actions/download-artifact@v3
       - name: Load docker image
@@ -53,11 +57,11 @@ jobs:
       - name: update the log file if the container is running
         if: success()
         run: |
-          echo "Container up and running" >> logfile/log.txt
+          echo "Container up and running" >> log.txt
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
-          echo "Container failed to run" >> logfile/log.txt
+          echo "Container failed to run" >> log.txt
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Python
