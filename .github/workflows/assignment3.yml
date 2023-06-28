@@ -54,15 +54,12 @@ jobs:
         if: success()
         run: |
           cd logfile
-          cat log.txt
           echo "Container up and running" >> log.txt
-          cat log.txt
-          ls
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
           cd logfile
-          echo "Container failed to run" >> logfile/log.txt
+          echo "Container failed to run" >> log.txt
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Python
@@ -87,7 +84,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with: 
           name: logfile
-          path: log.txt
+          path: logfile/log.txt
           
       
     #query:
