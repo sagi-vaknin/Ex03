@@ -11,14 +11,14 @@ jobs:
         run: |
           docker build . --file Dockerfile --tag myapp:latest
       - name: updating the log file, if succesful image built
-        if: succeeded()
+        if: success()
         run: |
           current_time=$(date -Iminutes)
           echo " $current_time" > log.txt
           echo "Sagi Vaknin and Rani Bezalel" >> log.txt
           echo "image successfully built" >> log.txt 
       - name: updating the log file, if failure in image build
-        if: failed()
+        if: failure()
         run: |
           current_time=$(date -Iminutes)
           echo " $current_time" > log.txt
