@@ -49,7 +49,7 @@ jobs:
       - name: check myimage image is loaded
         run: docker image ls
       - name: run image in container
-        run: docker run -p 8000:8000 myapp:latest
+        run: docker run -p 8000:8000 myapp:latest &
       - name: update the log file if the container is running
         if: success()
         run: |
