@@ -53,11 +53,11 @@ jobs:
       - name: update the log file if the container is running
         if: success()
         run: |
-          echo "Container up and running" >> log.txt
+          echo "Container up and running" >> logfile/log.txt
       - name: update the log file if the container is not running properly
         if: failure()
         run: |
-          echo "Container failed to run" >> log.txt
+          echo "Container failed to run" >> logfile/log.txt
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Python
