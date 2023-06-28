@@ -61,7 +61,7 @@ def test_get_meals():
     meals = response.json()
     assert len(meals) == 1
 
-    meal = meals[0]
+    meal = meals[1]
     calories = meal["cal"]
 
     assert 400 <= calories <= 500
