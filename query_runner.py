@@ -24,3 +24,5 @@ with open(file_path, "r") as file:
                     f"{dish_name} contains {response2_data['cal']} calories, \
                         {response2_data['sodium']} mgs of sodium, \
                             and {response2_data['sugar']} grams of sugar\n")
+    response_file.close()
+file.close()
