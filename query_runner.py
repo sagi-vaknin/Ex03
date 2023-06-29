@@ -1,7 +1,7 @@
 import requests
 
 file_path = "query.txt"
-base_url = "https://127.0.0.1:8000"  # Replace with your API base URL
+base_url = "http://127.0.0.1:8000"  # Replace with your API base URL
 
 # Open the file
 with open(file_path, "r") as file:
