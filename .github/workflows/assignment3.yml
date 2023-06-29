@@ -21,7 +21,7 @@ jobs:
       - name: updating the log file, if failure in image build
         if: failure()
         run: |
-          current_time=$(date -Iminutes)
+          current_time=$(TZ=Asia/Jerusalem date -Iminutes)
           echo " $current_time" > log.txt
           echo "Sagi Vaknin and Rani Bezalel" >> log.txt
           echo "image not able to be built" >> log.txt 
