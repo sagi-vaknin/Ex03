@@ -8,7 +8,7 @@ def test_create_dishes():
     ids = set()
     for dish in dishes:
         response = requests.post(f"{base_url}/dishes", json={"name": dish})
-        assert response.status_code == 201
+        assert response.status_code == 700
         dish_id = response.json()
         assert dish_id not in ids
         ids.add(dish_id)
