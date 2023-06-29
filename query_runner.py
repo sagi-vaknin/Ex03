@@ -15,7 +15,7 @@ with open(file_path, "r") as file:
             payload = {"name": dish_name}
             response1 = requests.post(url, json=payload)
 
-            if response1.status_code == 200:
+            if response1.status_code == 201:
                 #GET request
                 dish_id = response1.json()
                 response2 = requests.get(f"{base_url}/dishes/{dish_id}")
