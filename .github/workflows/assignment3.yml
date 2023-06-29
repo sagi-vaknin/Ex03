@@ -42,6 +42,15 @@ jobs:
       needs: build
       runs-on: ubuntu-latest
       steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest 
+          pip install requests
       - name: Download artifact
         uses: actions/download-artifact@v3
       - name: Load docker image
@@ -60,25 +69,26 @@ jobs:
         run: |
           cd logfile
           echo "Container failed to run" >> log.txt
+      - name: run pytest tests
+        run: |
+          cd tests
+          pytest -v assn3_tests.py > test_results.txt
+      - name: update the log file with successful test results
+        if: success()
+        run: |
+          cd logfile
+          echo "tests succeeded" >> log.txt
+      - name: update the log file with failed test results
+        if: failure()
+        run: |
+          cd logfile
+          echo "tests failed" >> log.txt
       - name: upload the updated log file
         if: always()
         uses: actions/upload-artifact@v3
         with: 
           name: logfile
-          path: logfile/log.txt
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest 
-          pip install requests
-      - name: run pytest tests
-        run: |
-          cd tests
-          pytest -v assn3_tests.py > test_results.txt
+          path: logfile/log.txt   
       - name: upload the test results
         if: always() 
         uses: actions/upload-artifact@v3
