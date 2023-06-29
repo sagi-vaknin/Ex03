@@ -1,12 +1,10 @@
 import requests
 
 file_path = "query.txt"
-base_url = "http://127.0.0.1:8000"  # Replace with your API base URL
+base_url = "http://127.0.0.1:8000"  
 
-# Open the file
 with open(file_path, "r") as file:
     with open("response.txt", "w") as response_file:
-        # Read and process each line
         for line in file:
             url = f"{base_url}/dishes"
             dish_name = line.strip()  

@@ -39,9 +39,9 @@ def test_same_dish_name():
     assert response.json() == -2
 
 def test_create_meal():
-    appetizer_id = 1  # ID of the "orange" dish
-    main_id = 2  # ID of the "spaghetti" dish
-    dessert_id = 3  # ID of the "apple pie" dish
+    appetizer_id = 1  #ID of the "orange" dish
+    main_id = 2  #ID of the "spaghetti" dish
+    dessert_id = 3  #ID of the "apple pie" dish
     response = requests.post(
         f"{base_url}/meals",
         json={
@@ -67,9 +67,9 @@ def test_get_meals():
     assert 400 <= calories <= 500
 
 def test_same_meal_name():
-    appetizer_id = 1  # ID of the "orange" dish
-    main_id = 2  # ID of the "spaghetti" dish
-    dessert_id = 3  # ID of the "apple pie" dish
+    appetizer_id = 1  #ID of the "orange" dish
+    main_id = 2  #ID of the "spaghetti" dish
+    dessert_id = 3  #ID of the "apple pie" dish
     response = requests.post(
         f"{base_url}/meals",
         json={
