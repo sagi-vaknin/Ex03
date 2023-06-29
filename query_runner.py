@@ -20,9 +20,6 @@ with open(file_path, "r") as file:
                 dish_id = response1.json()
                 response2 = requests.get(f"{base_url}/dishes/{dish_id}")
                 response2_data = response2.json()
-                response_file.write( \
-                    f"{dish_name} contains {response2_data['cal']} calories, \
-                        {response2_data['sodium']} mgs of sodium, \
-                            and {response2_data['sugar']} grams of sugar\n")
+                response_file.write(f"{dish_name} contains {response2_data['cal']} calories, {response2_data['sodium']} mgs of sodium, and {response2_data['sugar']} grams of sugar\n")
     response_file.close()
 file.close()
